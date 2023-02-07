@@ -1,0 +1,134 @@
+.primary--base {
+  background-color: #faa545;
+}
+
+.primary--dark {
+  background-color: #9c682c;
+}
+
+.primary--light {
+  background-color: #f4c591;
+}
+
+.success--base {
+  background-color: #28a745;
+}
+
+.success--dark {
+  background-color: #165524;
+}
+
+.success--light {
+  background-color: #8abb95;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.h1 {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.h3 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.h4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.h5 {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+button {
+  background-color: aquamarine;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.primary {
+  background-color: #faa545;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.success {
+  background-color: #28a745;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.info {
+  background-color: #17a2b8;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.warning {
+  background-color: #ffc107;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.mostrar-demo button {
+  background-color: aquamarine;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.mostrar-demo button.primary {
+  background-color: #faa545;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.mostrar-demo button.success {
+  background-color: #28a745;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.mostrar-demo button.info {
+  background-color: #17a2b8;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.mostrar-demo button.warning {
+  background-color: #ffc107;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+body {
+  background-color: aquamarine;
+  color: #333333;
+}
+
+section {
+  border: 1px solid #333333;
+  font-size: 1.5rem;
+}
+section:hover,
+section p {
+  background-color: bisque;
+}
+section p {
+  color: red;
+}
+
+footer {
+  margin-top: 75px;
+}
+footer p {
+  text-align: center;
+}
+
+/*# sourceMappingURL=estilos.css.map */

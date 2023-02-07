@@ -1,0 +1,22 @@
+@use "sass:map";
+@use 'colores';
+
+$tiposDeBoton: 'primary', 'success', 'info', 'warning';
+
+@mixin -boton($color: colores.$bg-color) {
+    background-color: $color;
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+@mixin crearBotones($colores) {
+    button {
+        @include -boton;
+    }
+
+    @each $boton in $tiposDeBoton {
+        button.#{$boton} {
+            @include _boton(map.get($colores, $boton));
+        }
+    }
+}

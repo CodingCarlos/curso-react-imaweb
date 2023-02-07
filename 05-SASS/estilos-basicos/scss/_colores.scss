@@ -1,0 +1,32 @@
+@use 'sass:map';
+
+$bg-color: aquamarine !default;
+$text-color: #333333 !default;
+
+$theme-colors: (
+  "primary": #faa545,
+  "success": #28a745,
+  "info": #17a2b8,
+  "warning": #ffc107,
+);
+
+$colores: (
+    "primary": (
+        "base": #faa545,
+        "dark": #9c682c,
+        "light": #f4c591,
+    ),
+    "success": (
+        "base": #28a745,
+        "dark": #165524,
+        "light": #8abb95,
+    )
+);
+
+@each $name, $color in $colores {
+    @each $tono, $tonoValor in $color {
+        .#{$name}--#{$tono} {
+            background-color: $tonoValor;
+        }
+    }
+}

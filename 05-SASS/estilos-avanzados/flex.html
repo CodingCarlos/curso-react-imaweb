@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body { height: 100vh; margin:0}
+        .container {
+            padding: 10px;
+            box-sizing: border-box;
+            height: 100%;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* flex-flow: column wrap; */
+            justify-content: space-around;
+            align-items: stretch;
+        }
+
+        .container > * {
+            border: 1px solid black;
+            padding: 8px;
+            /* flex-grow: 1; */
+            /* min-width: 100px;
+            max-width: 100px; */
+            /* width: 100px; */
+        }
+        
+        .elemento1 {
+            flex-basis: 100px;
+        }
+
+        .elemento3 {
+            flex: 1;
+            align-self: center;
+        }
+
+        .promocionado {
+            order: -1;
+        }
+
+        /* .elemento1 {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .elemento1 * {
+            flex-grow: 1;
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="elemento1">
+            <!-- <div>a</div>
+            <div>b</div> -->
+            1
+        </div>
+        <div>2</div>
+        <div class="elemento3">3</div>
+        <div class="promocionado">4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+</body>
+</html>

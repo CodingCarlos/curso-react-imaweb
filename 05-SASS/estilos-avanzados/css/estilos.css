@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/*
+    Mi librería hace esto.
+    Expone estas movidas
+    Carga por defecto X cosas
+    Espera que tu hagas esto.
+*/
+body {
+  background-color: #333;
+}
+
+button {
+  background-color: #333;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.primary {
+  background-color: #faa545;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.success {
+  background-color: #28a745;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.info {
+  background-color: #17a2b8;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+button.warning {
+  background-color: #ffc107;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+/* Extiendo la librería con mis movidas */
+button.primary {
+  font-size: 1.5em;
+}
+
+/* Añado mi SCSS custom */
+.boton-warn, .boton-error {
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.boton-warn:hover, .boton-error:hover {
+  background-color: lightgray;
+}
+.boton-warn .icon, .boton-error .icon {
+  height: 60px;
+  width: 60px;
+}
+
+.boton-error {
+  background-color: red;
+}
+
+.boton-warn {
+  background-color: yellow;
+  border-radius: 4px;
+}
+
+/*# sourceMappingURL=estilos.css.map */

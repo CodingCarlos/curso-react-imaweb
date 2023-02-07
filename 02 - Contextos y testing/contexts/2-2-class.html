@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Classes</title>
+  </head>
+  <body>
+    <script>
+        // function User(name) {
+        //     this.name = name;
+
+        //     // this.sayHi = function () {
+        //     //     console.log(`Hi, it's  ${this.name}`);
+        //     // }
+        // }
+
+        // User.prototype.sayHi = function () {
+        //     console.log(`Hi, it's  ${this.name}`);
+        // }
+
+        // User.prototype.isPaidUser = false;
+      class User {
+        constructor(name) {
+          this.name = name;
+        }
+
+        get name() {
+            return this._name.toUpperCase();
+        }
+
+        set name(name) {
+            this._name = name.toLowerCase();
+        }
+
+        sayHi() {
+          console.log(`Hi, it's  ${this.name}`);
+        }
+      }
+
+      // Usage:
+      let user = new User("John");
+
+      console.log(user);
+    
+      user.name = "Paco";
+    //  user._name = "PaCo"; // No hagas esto, plz.
+      console.log('user', user)
+      console.log('user._name', user._name)
+      console.log('user.name', user.name)
+    //   console.log('user.isPaidUser', user.isPaidUser)
+
+      user.sayHi();
+
+    //   let user2 = new User("Manolo");
+    //   user2.sayHi();
+    </script>
+  </body>
+</html>

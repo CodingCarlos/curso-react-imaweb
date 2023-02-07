@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Callbacks in Parallel example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Listen me</button>
+
+    <p></p>
+    
+    <script>
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      btn.addEventListener('click', manejaClick);
+
+      function manejaClick()  {
+        para.textContent = 'Cargando...';
+
+        const respuestas = {};
+
+        cargar((datos) => {
+          respuestas.cargar = datos;
+          
+          if (Object.keys(respuestas).length === 2) {
+            ejecutaFinal();
+          }
+        });
+
+        cargar2((datos) => {
+          respuestas.cargar2 = datos;
+
+          if (Object.keys(respuestas).length === 2) {
+            ejecutaFinal();
+          }
+        });
+
+        function ejecutaFinal() {
+          para.textContent = `${respuestas.cargar} - ${respuestas.cargar2}`;
+        }
+      }
+
+      function cargar(callback)  {
+        setTimeout(() => {
+          callback('Datos del servidor')
+        }, 1000);
+      }
+
+      function cargar2(callback)  {
+        setTimeout(() => {
+          callback('Otros datos')
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

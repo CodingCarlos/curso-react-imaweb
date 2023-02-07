@@ -1,0 +1,64 @@
+.primary--base {
+  background-color: #faa545;
+}
+
+.primary--dark {
+  background-color: #9c682c;
+}
+
+.primary--light {
+  background-color: #f4c591;
+}
+
+.success--base {
+  background-color: #28a745;
+}
+
+.success--dark {
+  background-color: #165524;
+}
+
+.success--light {
+  background-color: #8abb95;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.h1 {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.h3 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.h4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.h5 {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+body {
+  background-color: aquamarine;
+  color: #333333;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: calc(50vh + 5px + 25px + 20px);
+}
+
+/*# sourceMappingURL=about.css.map */

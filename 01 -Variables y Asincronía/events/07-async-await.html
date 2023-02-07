@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Async-Await example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Listen me</button>
+
+    <p></p>
+    
+    <script>
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      btn.addEventListener('click', manejaClick);
+
+      async function manejaClick()  {
+        para.textContent = 'Cargando...';
+        
+        await esperar();
+        para.textContent = 'Listo!';
+
+        const data = await cargar();
+        para.textContent = data;
+      }
+
+      function esperar()  {
+        return new Promise((resolve, reject) => {
+          setTimeout(resolve,  1000);
+        })
+      }
+
+      function cargar()  {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => resolve('Datos del servidor'),  1000);
+        })
+      }
+
+      console.log(manejaClick)
+
+      // async function main() {
+      //   await manejaClick();
+      // }
+      manejaClick()
+        .then(() => {
+          console.log('He terminado');
+        })
+
+    </script>
+  </body>
+</html>

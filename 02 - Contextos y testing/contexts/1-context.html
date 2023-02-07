@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Context</title>
+  </head>
+  <body>
+    <script>
+
+      const person = {
+        name: 'Bruce',
+        lastname: 'Wayne',
+        fullname: function() {
+          return `${this.name} ${this.lastname}`;
+        }
+      }
+
+      //console.log(person.fullname())
+
+      const saludar = function(greet, adj) {
+        console.log(this);
+        console.log(greet, this.fullname(), 'eres', adj);
+      } // .bind(person);
+
+      // saludar('Hola', 'majísimo');  // Falla: this === Window
+
+      // Funcionan: this === person
+      // const saludarBinded = saludar.bind(person);
+      // saludarBinded('Hola', 'especial');  
+
+      // saludar.call(person, 'Buenas', 'un makena');
+      // saludar.apply(person, ['Que pasa', 'grande']);
+
+
+      // FUNCTION BORROWING
+      const actor = {
+        name: 'Clint',
+        lastname: 'Eastwood',
+        // fullname: person.fullname,
+      };
+
+      // const result = actor.fullname();
+      // const result = person.fullname.apply(actor);
+      const result = person.fullname.call(actor);
+      console.log(result); // Clint Eastwood
+    </script>
+  </body>
+</html>

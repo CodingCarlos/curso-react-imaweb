@@ -1,0 +1,46 @@
+@use 'colores';
+@use 'parrafos';
+@use 'botones';
+
+// @include botones.-boton; // Falla: Las props privadas no pueden usarse fuera
+@include botones.crearBotones(colores.$theme-colors);
+
+.mostrar-demo {
+    // Crear otro theme colors distingo
+    @include botones.crearBotones(colores.$theme-colors);
+}
+
+// $dark-theme: false;
+// @if $dark-theme {
+//     colores.$bg-color: black;
+//     colores.$text-color: white;
+// }
+
+body {
+    background-color: colores.$bg-color;
+    color: colores.$text-color;
+}
+
+section {
+    $section-bg-color: bisque;
+
+    border: 1px solid colores.$text-color;
+    font-size: 1.5rem;
+
+    &:hover,
+    p {
+        background-color: $section-bg-color;
+    }
+
+    p {
+        color: red;
+    }
+}
+
+footer {
+    margin-top: 75px;
+
+    p {
+        text-align: center;
+    }
+}

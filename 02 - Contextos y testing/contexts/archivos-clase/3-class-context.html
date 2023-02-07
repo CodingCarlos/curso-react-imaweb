@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Classes and Context</title>
+  </head>
+  <body>
+    <script>
+      class Boton {
+        constructor(value) {
+          this.value = value;
+
+          // this.click = this.click.bind(this); // Fuerza el contexto de this
+        }
+
+        // click = () => {        // Mantiene el  contexto de this
+        // click = function () {  // Pierde el contexto de this
+        click() {                 // Pierde el contexto de this
+          console.log(this);
+          console.log(this.value);
+        }
+      }
+
+      const button = new Boton('Hola');
+
+      console.log(button);
+
+      // setTimeout(() => {
+      setTimeout(function () {
+        button.click();  // Funciona siempre
+      }, 1000);
+
+      // setTimeout(button.click, 1000);  // Falla casi siempre
+
+    </script>
+  </body>
+</html>

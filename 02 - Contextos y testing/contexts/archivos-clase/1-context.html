@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Context</title>
+  </head>
+  <body>
+    <script>
+      const persona = {
+        name: 'Bruce',
+        lastname: 'Wayne',
+        fullname: function ()  {
+          return `${this.name} ${this.lastname}`
+        }
+      }
+      // const persona2 = {
+      //   name: 'Peter',
+      //   lastname: 'Parker',
+      //   fullname: function ()  {
+      //     return `${this.name} ${this.lastname}`
+      //   }
+      // }
+
+      const saludar = function (saludo, animo) {
+        console.log(`${saludo} ${this.fullname()} ${animo}`);
+      }
+      
+      // saludar('Hola'); //  Falla
+
+      const saludarABatman = saludar.bind(persona);
+      saludarABatman('Hola', 'eres un crack');
+
+      saludar.call(persona, 'Hola', 'eres un crack');
+      // saludar.call(persona2, 'Hola');
+
+      saludar.apply(persona, ['Hola', 'eres un crack']);
+
+
+    </script>
+  </body>
+</html>

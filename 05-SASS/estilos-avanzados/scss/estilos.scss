@@ -1,0 +1,39 @@
+@use 'libreria' as mlb with (
+    $color-bg-color: #333,
+    $color-text-color: #FFF
+);
+
+/* Extiendo la librería con mis movidas */
+button.primary {
+    font-size: 1.5em;
+}
+
+/* Añado mi SCSS custom */
+%boton-base {
+    border-radius: 12px;
+    padding: 8px 12px;
+
+    &:hover {
+        background-color: lightgray;
+    }
+
+    .icon {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+// .primary {
+//     color: mlb.$color-text-color;
+// }
+
+.boton-error {
+    @extend %boton-base;
+    // @extend .primary;
+    background-color: red;
+}
+.boton-warn {
+    @extend %boton-base;
+    background-color: yellow;
+    border-radius: 4px;
+}

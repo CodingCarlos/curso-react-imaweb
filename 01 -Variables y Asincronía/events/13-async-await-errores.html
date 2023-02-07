@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AsyncAwait errores example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Click me!</button>
+
+    <p></p>
+
+    <script type="text/javascript">
+      // Declaraciones
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      // Eventos
+      btn.addEventListener('click', manejaBoton);
+
+      // Func
+      async function manejaBoton(e) {
+        para.textContent = 'Cargando...';
+
+        // En Paralelo
+        try {
+          const datos = await Promise.all([
+            cargar(),
+            cargar2()
+          ]);
+          para.textContent = `Mis respuestas: ${datos[0]} - ${datos[1]}`;
+        } catch(e) {
+          // ...
+        }
+
+        // //  el mas rapido
+        try {
+          const rapido = await Promise.any([cargar(), cargar2()]);
+          para.textContent = rapido;
+        } catch(e) {
+          // ...
+        }
+
+        // Síncronamente
+        // try {
+        //   const dato1 = await cargar();
+        //   para.textContent = dato1;
+
+        //   const dato2 = await cargar2();
+        //   para.textContent = dato2;
+          
+        // } catch (error) {
+        //   console.log('Error!', error)
+        // }
+        
+        console.log('Finalmente, yo estoy aquí')        
+
+        console.log('Me ejecuto al final');
+      }
+
+    // ---------------------
+
+      //  Recoger datos
+      function cargar() {
+        return new Promise((resolve, reject) => {
+          console.log('promesa 1')
+          setTimeout(() =>  resolve('Dato 1º'),  1000);
+        });
+      }
+
+    // ---------------------
+
+      //  Recoger datos
+      function cargar2() {
+        return new Promise((resolve, reject) => {
+          console.log('promesa 2')
+          setTimeout(() =>  reject(new Error('ERROR!')),  2000);
+        });
+      }
+    </script>
+  </body>
+  </html>

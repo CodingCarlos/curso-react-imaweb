@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Promesas errores example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Click me!</button>
+
+    <p></p>
+
+    <script type="text/javascript">
+      // Declaraciones
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      // Eventos
+      btn.addEventListener('click', manejaBoton);
+
+      // Func
+      function manejaBoton(e) {
+        para.textContent = 'Cargando...';
+
+        // En paralelo
+        Promise.all([
+          cargar(),
+          cargar2()
+        ])
+        .then((datos) => {
+          para.textContent = `Mis respuestas: ${datos[0]} - ${datos[1]}`;
+        })
+        .catch((error)  =>  {
+          console.log(error);
+        })
+        .finally(()  =>  {
+          console.log('Todo terminó');
+        });
+
+        // La más rápida
+        Promise.any([cargar(), cargar2()])
+          .then((dato) => {
+            para.textContent = `La mas rapida dice: ${dato}`;
+          })
+          .catch((error)  =>  {
+            console.log(error);
+          })
+          .finally((data)  =>  {
+            console.log('Algo terminó', data);
+          });
+
+        // Síncronamente
+        // cargar()
+        //   .then((dato) => {
+        //     para.textContent = dato;
+        //     return cargar2();
+        //   })
+        //   .then((dato)  =>  {
+        //     para.textContent = dato;    
+        //   })
+        //   .catch((error)  =>  {
+        //     console.log(error);
+        //   })
+        //   .finally(()  =>  {
+        //     console.log('Todo terminó');
+        //   });
+        
+        // Paralelo individual
+        // cargar().then(({ param1, param2 }) => {
+        //   para.textContent += param1;
+        //   para.textContent += param2;
+        // })
+        // .catch((error)  =>  {
+        //   console.log('Cargar peta: ', error);
+        // });
+
+        // cargar2().then((dato) => {
+        //   console.log('Promesa 2 correcta');
+        //   para.textContent += dato;
+        // })
+        // .catch((error)  =>  {
+        //   console.log('Cargar 2 peta', error);
+        // });
+
+
+        console.log('Me ejecuto antes que nadie');
+      }
+
+      function cargar() {
+        return new Promise((resolve, reject) => {
+          console.log('promesa 1')
+          setTimeout(() =>  reject(new Error('ERROR!')),  1000);
+          // setTimeout(() =>  resolve({
+          //   param1: 'Dato 1º A',
+          //   param2: 'Dato 1º B',
+          // }),  1000);
+        });
+      }
+
+      function cargar2() {
+        return new Promise((resolve, reject) => {
+          console.log('promesa 2')
+          // setTimeout(() =>  resolve('Dato 2º'),  2000);
+          // setTimeout(() =>  reject(new Error('ERROR!')),  2000);
+          throw new Error('el que sea');
+        });
+      }
+    </script>
+  </body>
+  </html>

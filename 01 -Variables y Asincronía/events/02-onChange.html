@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Input update example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="fname">First name: </label>
+        <input id="fname" type="text">
+        <!-- <input id="fname" type="text" onChange="handleChange(event)"> -->
+        <!-- <input id="fname" type="text" onInput="handleChange(event)"> -->
+      </div>
+    </form>
+    <p>Hola, soy <span></span></p>
+    <script>
+      const fname = document.getElementById('fname');
+      const span = document.querySelector('span');
+
+      // fname.addEventListener('change', e => {
+      //   console.log(e);
+      //   span.textContent = e.target.value;
+      // });
+
+      // fname.addEventListener('change', handleChange)
+      fname.addEventListener('keydown', handleChange);
+      
+      function handleChange(e) {
+        console.log('cambios')
+        span.textContent = e.target.value; 
+      }
+    </script>
+  </body>
+</html>

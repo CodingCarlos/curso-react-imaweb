@@ -1,0 +1,50 @@
+button {
+  padding: 8px 16px;
+}
+
+nav, .card-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-list .card button, nav {
+  background-color: #FAA545;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  height: 75px;
+  width: 100%;
+}
+nav > * {
+  margin: 8px 16px;
+}
+nav button {
+  width: 80px;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.card-list .card {
+  border: 1px solid #000000;
+  width: 100%;
+  margin: 8px;
+  text-align: center;
+  padding-bottom: 16px;
+}
+.card-list .card__pic {
+  background-color: #333333;
+  aspect-ratio: 16/9;
+}
+.card-list .card button {
+  border-radius: 50px;
+}
+
+/*# sourceMappingURL=ejemplo.css.map */

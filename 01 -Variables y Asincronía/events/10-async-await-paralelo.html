@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Async-Await in Parallel example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Listen me</button>
+
+    <p></p>
+    
+    <script>
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      btn.addEventListener('click', manejaClick);
+
+      async function manejaClick()  {
+        para.textContent = 'Cargando...';
+        
+        await esperar();
+        para.textContent = 'Listo!';
+
+        // Todo cargado
+        // const data = await Promise.all([cargar(), cargar2()])
+        // para.textContent = `${data[0]} - ${data[0]}`;
+
+        // El más rápido
+        const data = await Promise.any([cargar(), cargar2()])
+        para.textContent = `${data}`;
+      }
+
+      function esperar()  {
+        return new Promise((resolve, reject) => {
+          setTimeout(resolve,  1000);
+        })
+      }
+
+
+      function cargar()  {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => resolve('Datos del servidor'),  1000);
+        })
+      }
+
+      function cargar2()  {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => resolve('Otros datos'),  2000);
+        })
+      }
+
+    </script>
+  </body>
+</html>

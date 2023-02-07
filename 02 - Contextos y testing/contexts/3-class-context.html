@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Classes and Context</title>
+  </head>
+  <body>
+    <script>
+      class Button {
+        constructor(value) {
+          this.value = value;
+          // this.click = this.click.bind(this);
+        }
+
+        // click() {
+        //   console.log(this.value);
+        // }
+
+        click = () => {
+        // click = function clickMe () {
+          console.log(this.value);
+        }
+      }
+
+      let button = new Button("hello");
+
+      console.log(button);
+
+      // setTimeout(button.click.bind(button), 1000); // undefined
+      setTimeout(button.click, 1000); // undefined
+
+      // setTimeout(function () {
+      // setTimeout(() =>  {
+      //   button.click();
+      // }, 1000); // hello
+    // </script>
+  </body>
+</html>

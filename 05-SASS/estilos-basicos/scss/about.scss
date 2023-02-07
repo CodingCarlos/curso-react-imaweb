@@ -1,0 +1,22 @@
+@use 'colores';
+@use 'parrafos';
+
+body {
+    background-color: colores.$bg-color;
+    color: colores.$text-color;
+}
+
+@function sumar($numbers...) {
+    $sum: 0;
+    @each $number in $numbers {
+        $sum: $sum + $number;
+      }
+    @return $sum;
+}
+
+$margen-base: 20px;
+
+footer {
+    margin-top: sumar(5px, 25, $margen-base);
+    padding-top: calc(50vh + 5px + 25px + $margen-base);
+}

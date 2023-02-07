@@ -1,0 +1,13 @@
+@use 'sass:list';
+
+p {
+    font-size: 1.5rem;
+}
+
+$heading-sizes: 21px, 18px, 16px, 14px, 12px; 
+@for $i from 1 through 5 {
+    .h#{$i} {
+        font-size: list.nth($heading-sizes, $i);
+        font-weight: 400;
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "parking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "tsc --project .",
+    "start:ts": "npm run build && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "tsc --init"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.9.4"
+  }
+}

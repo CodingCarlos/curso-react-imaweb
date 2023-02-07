@@ -1,0 +1,24 @@
+/*
+    Mi librería hace esto.
+    Expone estas movidas
+    Carga por defecto X cosas
+    Espera que tu hagas esto.
+*/
+@forward 'colores' as color-* with (
+    $bg-color: #f1f0ee !default,
+    $text-color: #666666 !default
+);
+@forward 'botones' as btn-*;
+@use 'colores';
+@use 'botones';
+
+// Mejor no usar Import, porque mete todo en el scope global
+// @import 'colores';
+// @import 'botones';
+
+body {
+    background-color: colores.$bg-color;
+}
+
+// Igual esto debería usarse fuera, ¿no?
+@include botones.crearBotones(colores.$theme-colors);

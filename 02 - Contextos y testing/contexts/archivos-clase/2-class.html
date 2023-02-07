@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Classes</title>
+  </head>
+  <body>
+    <script>
+      // function Persona(nombre, apellido) {
+      //   this.name = nombre;
+      //   this.lastname = apellido;
+
+      //   // this.fullname =  () => {
+      //   //   return `${this.name} ${this.lastname}`
+      //   // }
+      // }
+
+      // Persona.prototype.fullname = () => {
+      //   return `${this.name} ${this.lastname}`
+      // }
+
+      //  ---
+
+      class Persona {
+        // constructor({ name, lastname }) {
+        //   this.name  = name;
+        //   this.lastname  = lastname || null;
+        // }
+
+        constructor(name, lastname = null) {
+          this.name = name;
+          this.lastname = lastname;
+
+        // this.fullname =  () => {
+        //   return `${this.name} ${this.lastname}`
+        // }
+        }
+
+        get name() {
+          return this._name.toLowerCase();
+        }
+        set name(valor) {
+          this._name = valor.toUpperCase();
+        }
+
+        // get lastname() {
+        //   return this._lastname.toLowerCase();
+        // }
+        // set lastname(valor) {
+        //   this._lastname = valor.toUpperCase();
+        // }
+
+        fullname() {
+          return `${this.name} ${this.lastname}`
+        }
+      }
+
+      // const batman =  new Persona('Bruce', 'Wayne');
+
+      // console.log(batman)
+
+      // batman.name = "brus"
+
+      // console.log(batman)
+      // console.log(batman.fullname())
+
+      //  ---
+
+      const API_RESPUESTA = [
+        { name: 'Paco',  lastname: 'Santos', age: 25},
+        { name: 'Luis',  lastname: 'Del omno', age: 5},
+        { name: 'Maria', age: 50},
+      ];
+
+      // const usuarios = API_RESPUESTA.map(user => new Persona(user.name, user.lastname));
+      // const usuarios = API_RESPUESTA.map(user => new Persona(user));
+
+      // console.log(usuarios);
+
+      const [ user0, user1, user2 ] = API_RESPUESTA;
+      // const user0 = API_RESPUESTA[0];
+      // const user2 = API_RESPUESTA[1];
+      // const user1 = API_RESPUESTA[2];
+
+      // console.log(user0);
+      // console.log(user1);
+      // console.log(user2);
+
+      const { name, lastname } = user0
+      // const name = user0.name
+      // const lastname = user0.lastname
+
+      console.log(name, lastname)
+
+    </script>
+  </body>
+</html>

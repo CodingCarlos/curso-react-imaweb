@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Listener example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <button>Listen me</button> -->
+    <button onclick="manejaClick()">
+      Listen me
+    </button>
+
+    <p></p>
+    
+    <script>
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      // btn.addEventListener('click', e => {
+      //   para.textContent = 'Click!';
+      // });
+      // btn.addEventListener('click', manejaClick)
+
+      function manejaClick()  {
+        // const strong = document.createElement('strong');
+        //   strong.textContent = 'creado';
+        // para.appendChild(strong);       
+        para.textContent = 'Click!';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+$mobile: 480px !default; 
+
+// @mixin only-for-mobile($breakpoint: $moblie) {
+@mixin only-for-mobile {
+    @media (max-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+// -- otro archivo
+@use 'mediaqueries' as media;
+
+// $smallDevices: media.$mobile - 30px;
+// @include media.only-for-mobile($smallDevices) {
+@include media.only-for-mobile {
+    p {
+        font-size: 150%;
+    }
+}

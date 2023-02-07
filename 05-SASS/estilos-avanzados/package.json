@@ -1,0 +1,16 @@
+{
+    "name": "estilos-avanzados",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "styles": "sass scss:css -w"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "sass": "^1.57.1"
+    }
+  }

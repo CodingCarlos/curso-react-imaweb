@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Callback errors example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Click me!</button>
+
+    <p></p>
+
+    <script type="text/javascript">
+      // Declaraciones
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      // Eventos
+      btn.addEventListener('click', manejaBoton);
+
+      // Func
+      function manejaBoton(e) {
+        const respuestas = {};
+        const  NUM_LLAMADAS = 2;
+
+        para.textContent = 'Cargando...';
+        // Esperar x segundos
+        cargar((err, dato) => {
+          if (err) {
+            //  ...
+            return;
+          }
+
+          respuestas.cargar = dato;
+
+          if (Object.keys(respuestas).length === NUM_LLAMADAS)  {
+            pintarFinal()
+          }
+        });
+        
+        cargar2((err, dato) => {
+          if (err) {
+            //  ...
+            return;
+          }
+
+          respuestas.cargar2 = dato;
+
+          if (Object.keys(respuestas).length === NUM_LLAMADAS)  {
+            pintarFinal()
+          }
+        });
+
+        function pintarFinal() {
+          // Pintar datos
+          para.textContent = 'Hola';
+        }
+      }
+
+      function cargar(callback) {
+        setTimeout(() =>  {
+          callback(null, 'dato1');
+        },  1000);
+      }
+
+      function cargar2(callback) {
+        setTimeout(() =>  {
+          callback(null, 'dato1');
+        },  1000);
+      }
+    </script>
+  </body>
+  </html>

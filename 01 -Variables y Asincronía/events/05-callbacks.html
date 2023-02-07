@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Promises example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Listen me</button>
+
+    <p></p>
+    
+    <script>
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+
+      btn.addEventListener('click', manejaClick);
+
+      function manejaClick()  {
+        para.textContent = 'Cargando...';
+
+        esperar(() => {
+          para.textContent = 'Listo!';
+      
+          cargar((datos) => {
+            para.textContent = datos;
+          });
+        });
+      }
+
+      function esperar(callback)  {
+        setTimeout(callback,  1000);
+      }
+
+      function cargar(callback)  {
+        setTimeout(() => {
+          callback('Datos del servidor')
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>

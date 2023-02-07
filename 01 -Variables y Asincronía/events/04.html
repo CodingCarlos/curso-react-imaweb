@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Prevent default example</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Listen me</button>
+
+    <p></p>
+    
+    <script>
+      const btn = document.querySelector('button');
+      const para = document.querySelector('p');
+      
+      // const evento = new Event('personalizado', {
+      //   bubbles: true,
+      //   cancelable: false,
+      // });
+
+      btn.addEventListener('click', disparaEventoCustom);
+      para.addEventListener('click', disparaEventoCustom);
+
+      function disparaEventoCustom(e) {
+        para.textContent = 'Click!';
+        // e.target.dispatchEvent(evento);
+        e.target.dispatchEvent(new Event('personalizado'));
+      }
+
+      document.addEventListener('personalizado', e =>  {
+        console.log('Evento custom recogido!');
+        console.log(e);
+      });
+    </script>
+  </body>
+</html>
