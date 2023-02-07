@@ -26,7 +26,10 @@ export function getPosts() {
 
     const postList = [
         { ...post, id: '1' }, 
-        { ...post, id: '2' }, 
+        { ...post, id: '2', usuario: {
+          name: "Julia",
+          pic: "https://thispersondoesnotexist.com/image?id=3"
+        }}, 
         { ...post, id: '3' }, 
     ];
 

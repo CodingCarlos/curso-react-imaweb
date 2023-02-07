@@ -11,7 +11,7 @@ interface UserHeaderProps {
 function UserHeader(props: UserHeaderProps) {
     return (
         <header className="user-header">
-            <UserPicName usuario={props.user} />
+            <UserPicName usuario={props.user} big />
         </header>
     );
 }

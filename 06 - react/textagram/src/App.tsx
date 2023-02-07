@@ -2,8 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import Home from './pages/Home';
@@ -31,7 +30,7 @@ function App() {
             />
 
             <Route
-              path="/user" 
+              path="/user/:userName" 
               element={(<User />)}
             />
 

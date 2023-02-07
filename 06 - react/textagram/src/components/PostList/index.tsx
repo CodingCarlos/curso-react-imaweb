@@ -4,6 +4,7 @@ import Post from '../Post';
 
 interface IPostList {
     list: IPost[];
+    showComments?: boolean;
 };
 
 function PostList(props: IPostList) {
@@ -13,7 +14,7 @@ function PostList(props: IPostList) {
                 <Post
                     key={post.id}
                     post={post}
-                    showComments
+                    showComments={props.showComments}
                 />
             )) }
         </>

@@ -6,12 +6,23 @@ import './UserPicName.scss'
 
 interface IUserPicName {
     usuario: IUsuario;
+    big?: boolean;
 }
 
 function UserPicName(props: IUserPicName) {
+    function setClassName() {
+        let className = 'user-pic-name';
+
+        if (props.big) {
+            className += ' user-pic-name--big';
+        }
+
+        return className;
+    }
+
     return (
-        <div className="user-basic-info">
-            <Link to="/user">
+        <div className={`user-pic-name ${props.big ? 'user-pic-name--big' : ''}`}>
+            <Link to={`/user/${props.usuario.name}`}>
                 <img
                     src={props.usuario.pic}
                     alt="profile"
