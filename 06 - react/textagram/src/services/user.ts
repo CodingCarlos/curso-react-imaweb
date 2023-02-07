@@ -3,16 +3,20 @@ import { IUsuario } from "../interfaces";
 const usuarios: IUsuario[] = [
     {
         name: "Paco",
-        pic: "https://thispersondoesnotexist.com/image?id=1"
+        pic: "https://randomuser.me/api/portraits/lego/6.jpg"
     },
     {
         name: "Manolo",
-        pic: "https://thispersondoesnotexist.com/image?id=2"
+        pic: "https://randomuser.me/api/portraits/lego/3.jpg"
     },
     {
         name: "Julia",
-        pic: "https://thispersondoesnotexist.com/image?id=3"
+        pic: "https://randomuser.me/api/portraits/lego/7.jpg"
     },
+    {
+        name: 'Yo',
+        pic: 'https://randomuser.me/api/portraits/lego/8.jpg',
+    }
 ];
 
 export function getUsers(): IUsuario[] {

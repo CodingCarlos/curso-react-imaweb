@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { IUsuario, IPost } from "../../interfaces";
-import { getPosts } from '../../services/post';
+import { listPostsByUser } from '../../services/post';
 import { findUser } from '../../services/user';
 import UserHeader from "./components/UserHeader";
 import PostList from "../../components/PostList";
@@ -25,7 +25,7 @@ function User() {
         }
 
         setUser(userFound);
-        const postList = getPosts();
+        const postList = listPostsByUser(userName);
         setPosts(postList);
     }, [userName]);
 
