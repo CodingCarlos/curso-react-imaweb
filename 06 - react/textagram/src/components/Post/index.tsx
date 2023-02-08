@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IPost } from '../../interfaces';
-import Comments from "../Comments";
+import Comments from "./Comments";
 import UserPicName from "../UserPicName";
 
 import './Post.scss';

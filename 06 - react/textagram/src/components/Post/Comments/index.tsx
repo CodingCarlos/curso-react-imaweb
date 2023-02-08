@@ -1,6 +1,6 @@
 import React from "react";
-import { IComentario } from "../../interfaces";
-import UserPicName from "../UserPicName";
+import { IComentario } from "../../../interfaces";
+import UserPicName from "../../UserPicName";
 
 import './Comments.scss';
 
