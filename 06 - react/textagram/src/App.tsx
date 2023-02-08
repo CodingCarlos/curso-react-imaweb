@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { useReducer } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,6 +7,7 @@ import {
 
 import LoginContext from './contexts/LoginContext';
 import { IUsuario } from './interfaces';
+import LoginReducer from './reducers/LoginReducer';
 
 import Home from './pages/Home';
 import User from './pages/User';
@@ -23,10 +24,11 @@ const defaultUser: IUsuario = {
 }
 
 function App() {
-  const [loginData, setLoginData] = useState<IUsuario | null>(null);
+  const [loginData, dispatchLoginData] = useReducer(LoginReducer, null);
+  // const [loginData, setLoginData] = useState<IUsuario | null>(null);
 
   return (
-    <LoginContext.Provider value={[loginData, setLoginData]}>
+    <LoginContext.Provider value={[loginData, dispatchLoginData]}>
     {/* <LoginContext.Provider value={{ context: loginData, setContext: setLoginData }}> */}
       <div className="App">
         <Router>

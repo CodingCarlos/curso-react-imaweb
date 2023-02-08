@@ -4,7 +4,7 @@ import { findUser } from "../../services/user";
 
 function Login() {
     const [username, setUsername] = useState<string>('');
-    const [login, setLogin] = useContext(LoginContext);
+    const [login, dispatchLogin] = useContext(LoginContext);
     // const loginContext = useContext(LoginContext);
     // const login = loginContext.context;
     // const setLogin = loginContext.setContext;
@@ -18,7 +18,8 @@ function Login() {
             return;
         }
 
-        setLogin(foundUser);
+        dispatchLogin({ type: 'LOGIN', payload: foundUser });
+        // setLogin(foundUser);
     }
 
     return (

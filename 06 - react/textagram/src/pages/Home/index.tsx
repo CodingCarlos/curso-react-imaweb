@@ -18,6 +18,7 @@ function Home() {
       addPost(newPost);
       setPosts([newPost, ...posts]);
     }
+  
     return (
         <>
             <PostForm onNewPost={addNewPost} />
