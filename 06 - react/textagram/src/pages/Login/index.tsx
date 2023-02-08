@@ -1,10 +1,13 @@
 import React, { useContext, useRef } from "react";
 import LoginContext from "../../contexts/LoginContext";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { IUsuario } from "../../interfaces";
 import { findUser } from "../../services/user";
 
 function Login() {
     const username = useRef<HTMLInputElement>(null);
-    const [login, dispatchLogin] = useContext(LoginContext);
+    const [, dispatchLogin] = useContext(LoginContext);
+    const [, setStoredLogin] = useLocalStorage<IUsuario>('logged_user');
 
     function doLogin(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -20,6 +23,7 @@ function Login() {
         }
 
         dispatchLogin({ type: 'LOGIN', payload: foundUser });
+        setStoredLogin(foundUser);
     }
 
     return (

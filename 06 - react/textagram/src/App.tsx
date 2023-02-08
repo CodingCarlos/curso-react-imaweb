@@ -8,6 +8,7 @@ import {
 import LoginContext from './contexts/LoginContext';
 import { IUsuario } from './interfaces';
 import LoginReducer from './reducers/LoginReducer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 import Home from './pages/Home';
 import User from './pages/User';
@@ -18,18 +19,12 @@ import Topbar from './components/Topbar';
 
 import './App.scss';
 
-const defaultUser: IUsuario = {
-  name: 'Yo',
-  pic: 'https://randomuser.me/api/portraits/lego/8.jpg',
-}
-
 function App() {
-  const [loginData, dispatchLoginData] = useReducer(LoginReducer, null);
-  // const [loginData, setLoginData] = useState<IUsuario | null>(null);
+  const [savedUser] = useLocalStorage<IUsuario>('logged_user');
+  const [loginData, dispatchLoginData] = useReducer(LoginReducer, savedUser);
 
   return (
     <LoginContext.Provider value={[loginData, dispatchLoginData]}>
-    {/* <LoginContext.Provider value={{ context: loginData, setContext: setLoginData }}> */}
       <div className="App">
         <Router>
           <Topbar />
