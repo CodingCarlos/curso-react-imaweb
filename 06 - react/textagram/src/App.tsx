@@ -26,7 +26,8 @@ function App() {
   const [loginData, setLoginData] = useState<IUsuario | null>(null);
 
   return (
-    <LoginContext.Provider value={{ context: loginData, setContext: setLoginData }}>
+    <LoginContext.Provider value={[loginData, setLoginData]}>
+    {/* <LoginContext.Provider value={{ context: loginData, setContext: setLoginData }}> */}
       <div className="App">
         <Router>
           <Topbar />

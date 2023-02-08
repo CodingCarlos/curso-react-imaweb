@@ -4,7 +4,8 @@ import LoginContext from "../../contexts/LoginContext";
 import './Topbar.scss';
 
 export default function Topbar() {
-    const login = useContext(LoginContext).context;
+    const [login] = useContext(LoginContext);
+    // const login = useContext(LoginContext).context;
     // const loginContext = useContext(LoginContext);
     // const login = loginContext.context;
     

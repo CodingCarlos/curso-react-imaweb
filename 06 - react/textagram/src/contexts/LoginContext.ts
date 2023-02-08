@@ -1,15 +1,22 @@
-import React, { createContext } from 'react';
+import React, { createContext, ReactElement } from 'react';
 import { IUsuario } from '../interfaces';
 
-interface ILoginContext {
-    context: IUsuario | null;
-    setContext: React.Dispatch<React.SetStateAction<IUsuario | null>>;
-};
-const defaultValue: ILoginContext = {
-    context: null,
-    setContext: () => {}
-};
+// const LoginContext = createContext<[IUsuario | null, React.Dispatch<React.SetStateAction<IUsuario | null>>]>([
+//     null,
+//     () => {}
+// ]);
 
-const LoginContext = createContext(defaultValue);
+// const defaultValue: [IUsuario | null, React.Dispatch<React.SetStateAction<IUsuario | null>>] = [
+//     null, 
+//     () => {}
+// ]
+// const LoginContext = createContext(defaultValue);
+
+type LoginContextType = [IUsuario | null, React.Dispatch<React.SetStateAction<IUsuario | null>>];
+const defaultValue: LoginContextType = [
+    null, 
+    () => {}
+]
+const LoginContext = createContext<LoginContextType>(defaultValue);
 
 export default LoginContext;

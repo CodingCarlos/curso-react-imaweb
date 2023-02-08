@@ -10,7 +10,8 @@ interface PostFormProps {
 
 function PostForm(props: PostFormProps) {
     const [newPostText, setNewPostText] = useState('');
-    const login = useContext(LoginContext).context;
+    const [login] = useContext(LoginContext);
+    // const login = useContext(LoginContext).context;
 
     function newPost(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault();

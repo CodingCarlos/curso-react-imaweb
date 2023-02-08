@@ -4,9 +4,10 @@ import { findUser } from "../../services/user";
 
 function Login() {
     const [username, setUsername] = useState<string>('');
-    const loginContext = useContext(LoginContext);
-    const login = loginContext.context;
-    const setLogin = loginContext.setContext;
+    const [login, setLogin] = useContext(LoginContext);
+    // const loginContext = useContext(LoginContext);
+    // const login = loginContext.context;
+    // const setLogin = loginContext.setContext;
 
     function doLogin(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -16,7 +17,7 @@ function Login() {
             console.error('Usuario no encontrado');
             return;
         }
-        
+
         setLogin(foundUser);
     }
 
