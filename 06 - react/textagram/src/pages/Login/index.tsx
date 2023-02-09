@@ -1,4 +1,5 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import LoginContext from "../../contexts/LoginContext";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { IUsuario } from "../../interfaces";
@@ -8,6 +9,8 @@ function Login() {
     const username = useRef<HTMLInputElement>(null);
     const [, dispatchLogin] = useContext(LoginContext);
     const [, setStoredLogin] = useLocalStorage<IUsuario>('logged_user');
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     function doLogin(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -24,6 +27,8 @@ function Login() {
 
         dispatchLogin({ type: 'LOGIN', payload: foundUser });
         setStoredLogin(foundUser);
+        const redirect = searchParams.get('redirect') || '/';
+        navigate(redirect);
     }
 
     return (
