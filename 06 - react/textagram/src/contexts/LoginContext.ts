@@ -1,19 +1,18 @@
-import React, { createContext, ReactElement } from 'react';
-import { IUsuario } from '../interfaces';
-import { LoginReducerDispatcher } from '../reducers/LoginReducer';
+import React, { createContext } from 'react';
+import { LoginReducerDispatcher, LoginReducerState } from '../reducers/LoginReducer';
 
-// const LoginContext = createContext<[IUsuario | null, React.Dispatch<React.SetStateAction<IUsuario | null>>]>([
+// const LoginContext = createContext<[LoginReducerState, React.Dispatch<React.SetStateAction<LoginReducerState>>]>([
 //     null,
 //     () => {}
 // ]);
 
-// const defaultValue: [IUsuario | null, React.Dispatch<React.SetStateAction<IUsuario | null>>] = [
+// const defaultValue: [LoginReducerState, React.Dispatch<React.SetStateAction<LoginReducerState>>] = [
 //     null, 
 //     () => {}
 // ]
 // const LoginContext = createContext(defaultValue);
 
-type LoginContextType = [IUsuario | null, React.Dispatch<LoginReducerDispatcher>];
+type LoginContextType = [LoginReducerState, React.Dispatch<LoginReducerDispatcher>];
 const defaultValue: LoginContextType = [
     null, 
     () => {}

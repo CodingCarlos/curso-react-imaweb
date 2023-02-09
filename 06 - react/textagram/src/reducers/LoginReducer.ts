@@ -1,14 +1,21 @@
+import { Reducer } from "react";
 import { IUsuario } from "../interfaces";
+
+export enum LoginReducerActions {
+    LOGIN = 'LOGIN',
+    LOGOUT = 'LOGOUT',
+};
 
 export type LoginReducerState = IUsuario | null;
 export interface LoginReducerDispatcher {
-    type: string;
+    type?: LoginReducerActions;
     payload?: IUsuario;
 };
+export type LoginReducerType = Reducer<LoginReducerState, LoginReducerDispatcher>;
 
-const reducer = (state: IUsuario | null = null, action: LoginReducerDispatcher = { type: '' }): IUsuario | null => {
+const reducer = (state: LoginReducerState = null, action: LoginReducerDispatcher = {}): LoginReducerState => {
     switch (action.type) {
-        case 'LOGIN': 
+        case LoginReducerActions.LOGIN: 
             // Hacer mis comprobaciones o gestiones
             if (!action.payload) {
                 return state;
@@ -16,7 +23,7 @@ const reducer = (state: IUsuario | null = null, action: LoginReducerDispatcher =
 
             return action.payload;
 
-        case 'LOGOUT': 
+        case LoginReducerActions.LOGOUT: 
             return null;
         
         default: 

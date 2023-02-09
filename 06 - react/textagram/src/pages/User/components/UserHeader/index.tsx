@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import useLogout from "../../../../hooks/useLogout";
 import UserPicName from "../../../../components/UserPicName";
 import LoginContext from "../../../../contexts/LoginContext";
-import useLocalStorage from "../../../../hooks/useLocalStorage";
 import { IUsuario } from "../../../../interfaces";
 
 import './UserHeader.scss';
@@ -12,21 +11,14 @@ interface UserHeaderProps {
 }
 
 function UserHeader(props: UserHeaderProps) {
-    const [login, loginDispatcher] = useContext(LoginContext);
-    const [, setLoginStorage] = useLocalStorage<IUsuario>('logged_user');
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        loginDispatcher({ type: 'LOGOUT' });
-        setLoginStorage(null);
-        navigate('/');
-    }
+    const [login] = useContext(LoginContext);
+    const logout = useLogout();
 
     return (
         <header className="user-header">
             <UserPicName usuario={props.user} big />
             { login && (login.name === props.user.name) && (
-                <button onClick={handleLogout}>
+                <button onClick={logout}>
                     Logout
                 </button>
             )}

@@ -1,4 +1,4 @@
-import React, { useEffect, Reducer, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,7 +7,7 @@ import {
 
 import LoginContext from './contexts/LoginContext';
 import { IUsuario } from './interfaces';
-import LoginReducer, { LoginReducerState, LoginReducerDispatcher } from './reducers/LoginReducer';
+import LoginReducer, { LoginReducerType, LoginReducerActions } from './reducers/LoginReducer';
 import useLocalStorage from './hooks/useLocalStorage';
 
 import Home from './pages/Home';
@@ -22,14 +22,11 @@ import './App.scss';
 
 function App() {
   const [savedUser] = useLocalStorage<IUsuario>('logged_user');
-  console.log(savedUser);
-  const [loginData, dispatchLoginData] = useReducer<Reducer<LoginReducerState, LoginReducerDispatcher>>(LoginReducer, savedUser);
-  // const [loginData, dispatchLoginData] = useReducer<Reducer<IUsuario | null, LoginReducerDispatcher>>(LoginReducer, savedUser);
+  const [loginData, dispatchLoginData] = useReducer<LoginReducerType>(LoginReducer, savedUser);
 
   useEffect(() => {
-    console.log('Ha cambiado el usuario guardado', savedUser);
     if (savedUser) {
-      dispatchLoginData({ type: 'LOGIN', payload: savedUser });
+      dispatchLoginData({ type: LoginReducerActions.LOGIN, payload: savedUser });
     }
   }, [savedUser]);
 
