@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import HomeContext from '../../contexts/HomeContext';
 import { IPost } from '../../interfaces';
 import { getPosts, addPost } from '../../services/post';
 
@@ -21,8 +22,10 @@ function Home() {
   
     return (
         <>
+          <HomeContext.Provider value={[posts, setPosts]}>
             <PostForm onNewPost={addNewPost} />
             <PostList list={posts} />
+          </HomeContext.Provider>
         </>
     )
 }

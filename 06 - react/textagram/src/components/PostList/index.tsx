@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import HomeContext from "../../contexts/HomeContext";
 import { IPost } from '../../interfaces';
 import Post from '../Post';
 
@@ -8,9 +9,12 @@ interface IPostList {
 };
 
 function PostList(props: IPostList) {
+    const [context] = useContext(HomeContext);
+
     return (
         <>
-            { props.list.map((post) => (
+            {// props.list.map((post) => (
+             context.map((post) => (
                 <Post
                     key={post.id}
                     post={post}
