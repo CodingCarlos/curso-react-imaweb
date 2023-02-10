@@ -12,7 +12,10 @@ function useLogin(): (foundUser: IUsuario) => void {
     const navigate = useNavigate();
 
     const doLogin = (foundUser: IUsuario): void => {
-        loginDispatcher({ type: LoginReducerActions.LOGIN, payload: foundUser });
+        loginDispatcher({
+            type: LoginReducerActions.LOGIN, 
+            payload: foundUser 
+        });
         setLoginStorage(foundUser);
         const redirect = searchParams.get('redirect') || '/';
         navigate(redirect);

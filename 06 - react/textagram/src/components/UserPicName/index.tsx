@@ -10,7 +10,7 @@ interface IUserPicName {
 }
 
 function UserPicName(props: IUserPicName) {
-    function setClassName() {
+    function getClassName() {
         let className = 'user-pic-name';
 
         if (props.big) {
@@ -21,7 +21,7 @@ function UserPicName(props: IUserPicName) {
     }
 
     return (
-        <div className={`user-pic-name ${props.big ? 'user-pic-name--big' : ''}`}>
+        <div className={`user-pic-name ${getClassName()}`}>
             <Link to={`/user/${props.usuario.name}`}>
                 <img
                     src={props.usuario.pic}
