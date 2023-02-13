@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import HomeContext from '../../contexts/HomeContext';
+import { RootState } from '../../redux/store';
+import { getPosts, addPost } from '../../redux/postSlice';
+
 import { IPost } from '../../interfaces';
-import { getPosts, addPost } from '../../services/post';
 
 import PostForm from './components/PostForm';
 import PostList from '../../components/PostList';
 
 function Home() {
-    const [posts, setPosts] = useState<IPost[]>([]);
+    const dispatch = useDispatch();
+    const posts = useSelector((state: RootState) => state.posts.list);
 
     useEffect(() => {
-      const postList = getPosts();
-      setPosts(postList);
-    }, []);
+      dispatch(getPosts());
+    }, [dispatch]);
   
     function addNewPost(newPost: IPost) {
-      addPost(newPost);
-      setPosts([newPost, ...posts]);
+      dispatch(addPost(newPost));
     }
   
     return (
         <>
-          <HomeContext.Provider value={[posts, setPosts]}>
-            <PostForm onNewPost={addNewPost} />
-            <PostList list={posts} />
-          </HomeContext.Provider>
+          <PostForm onNewPost={addNewPost} />
+          <PostList list={posts} />
         </>
     )
 }

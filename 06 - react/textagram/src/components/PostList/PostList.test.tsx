@@ -3,7 +3,6 @@ import { MemoryRouter as Router } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import PostList from ".";
 import Post from "../Post";
-import HomeContext from "../../contexts/HomeContext";
 import { IPost } from "../../interfaces";
 import { getPosts } from "../../services/post-mock";
 
@@ -25,9 +24,7 @@ const dummyPostList: IPost[] = getPosts();
 describe('PostList Component', () => {
     test('Renders a list of posts', () => {
         const result = render(
-            <HomeContext.Provider value={[dummyPostList, () => {}]}>
-                <PostList list={dummyPostList} />
-            </HomeContext.Provider>
+            <PostList list={dummyPostList} />
         , { wrapper: Router });
 
         // const elements = screen.getAllByText('MOCK_POST');
@@ -37,9 +34,7 @@ describe('PostList Component', () => {
 
     test('If empty, does not render anything', () => {
         const result = render(
-            <HomeContext.Provider value={[[], () => {}]}>
-                <PostList list={dummyPostList} />
-            </HomeContext.Provider>
+            <PostList list={[]} />
         , { wrapper: Router });
 
         // b) Contar elementos "primer nivel"

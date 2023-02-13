@@ -16,7 +16,7 @@ function ProtectedRoute(props: IProtectedRoute) {
         if (!loginData) {
             navigate(`/login?redirect=${location.pathname}`);
         }
-    }, [loginData, navigate])
+    }, [loginData, navigate, location.pathname])
 
     return (
         <>

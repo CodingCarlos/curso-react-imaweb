@@ -33,6 +33,7 @@ export function addPost(newPost: IPost): boolean {
 }
 
 export function getPosts() {
+    console.log('Esto es una llamada a la API');
     return postList;
 }
 
