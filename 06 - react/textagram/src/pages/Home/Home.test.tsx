@@ -15,9 +15,11 @@ jest.mock('../../services/post');
 //     return realModule;
 //     // return {
 //     //     ...realModule,
-//     //     // getPosts: jest.fn(),
+//     //     // getPosts: () => jest.fn(),
 //     // };
-// } );
+// });
+
+// console.log(getPosts);
 
 // const setup = () => {
 //     (getPosts as jest.Mock).mockImplementation(jest.fn());
@@ -35,30 +37,14 @@ describe('Home Page', () => {
 
     test('Llama al servicio post/getPosts', () => {
         // Define la implementación del mock
-        mockGetPosts.mockImplementation(() => [{
-            id: '',
-            usuario: {
-              name: "Paco",
-              pic: "https://randomuser.me/api/portraits/lego/6.jpg"
-            },
-            contenido: "Hola, soy un post",
-            comentarios: [
-              {
-                usuario: {
-                  name: "Paco",
-                  pic: "https://randomuser.me/api/portraits/lego/6.jpg"
-                },
-                comentario: "Vaya pedazo de post",
-              },
-            ],
-          }]);
+        mockGetPosts.mockImplementation(() => []);
 
-        // expect(getPosts).not.toHaveBeenCalled();
+        expect(getPosts).not.toHaveBeenCalled();
         render((
             <Provider store={store}>
                 <Home />
             </Provider>
         ), {wrapper: Router});
-        // expect(getPosts).toHaveBeenCalled();
+        expect(getPosts).toHaveBeenCalled();
     });
 })
