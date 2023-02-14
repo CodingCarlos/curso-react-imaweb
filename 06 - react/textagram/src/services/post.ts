@@ -32,9 +32,13 @@ export function addPost(newPost: IPost): boolean {
   return true;
 }
 
-export function getPosts() {
-    console.log('Esto es una llamada a la API');
-    return postList;
+export function getPosts(): Promise<IPost[]> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log('Esto es una llamada a la API');
+        resolve(postList);
+      }, 2000);
+    });
 }
 
 export function listPostsByUser(name: string): IPost[] {

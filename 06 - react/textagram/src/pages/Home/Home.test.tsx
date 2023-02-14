@@ -37,7 +37,7 @@ describe('Home Page', () => {
 
     test('Llama al servicio post/getPosts', () => {
         // Define la implementación del mock
-        mockGetPosts.mockImplementation(() => []);
+        // mockGetPosts.mockImplementation(() => []);
 
         expect(getPosts).not.toHaveBeenCalled();
         render((
