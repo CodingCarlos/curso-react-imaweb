@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import useLogin from "../../hooks/useLogin";
-import { findUser } from "../../services/user";
+import { addUser, findUser } from "../../services/user";
+import RegisterUser from "./components/RegisterUser";
 
 function Login() {
     const username = useRef<HTMLInputElement>(null);
@@ -22,8 +23,15 @@ function Login() {
         login(foundUser);
     }
 
+    function register(data: object) {
+        console.log('Registrando al usuario...', data);
+        addUser(data)
+            .then(console.log);
+    }
+
     return (
         <div>
+            <h2>Login as user</h2>
             <form onSubmit={doLogin}>
                 <input
                     type="text"
@@ -34,6 +42,9 @@ function Login() {
                     Entrar
                 </button>
             </form>
+
+            <h2>Register new user</h2>
+            <RegisterUser onRegister={register} />
         </div>
     );
 }

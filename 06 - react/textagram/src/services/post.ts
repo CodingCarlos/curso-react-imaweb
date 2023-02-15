@@ -1,7 +1,5 @@
 import { IPost, INewPost } from '../interfaces';
-
-const apiUrl = 'https://us-central1-textagram-app.cloudfunctions.net/app';
-// const apiUrl = 'http://localhost:5000/textagram-app/us-central1/app';
+import { apiUrl } from "./api";
 
 export async function addPost(newPost: INewPost): Promise<IPost> {
   // postList = [newPost, ...postList];

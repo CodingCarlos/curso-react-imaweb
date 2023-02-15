@@ -1,4 +1,5 @@
 import { IUsuario } from "../interfaces";
+import { apiUrl } from "./api";
 
 const usuarios: IUsuario[] = [
     {
@@ -18,6 +19,20 @@ const usuarios: IUsuario[] = [
         pic: 'https://randomuser.me/api/portraits/lego/8.jpg',
     }
 ];
+
+export async function addUser(newUser: object): Promise<IUsuario> {
+    const response = await fetch(`${apiUrl}/user`, {
+        method: 'post',
+        body: JSON.stringify(newUser),
+    });
+
+    const user: IUsuario = await response.json();
+
+    // ESTO SE IRÁ DE AQUI MAÑANA MISMO!
+    usuarios.push(user);
+
+    return user;
+}
 
 export function getUsers(): IUsuario[] {
     return usuarios;
