@@ -5,15 +5,15 @@ import { findUser } from '../../services/user';
 import UserHeader from "./components/UserHeader";
 import PostList from "../../components/PostList";
 import useUserPosts from "./hooks/useUserPosts";
+import useGetPosts from "../../hooks/useGetPosts";
 
 function User() {
     const [user, setUser] = useState<IUsuario>();
-    // const [posts, setPosts] = useState<IPost[]>([]);
-
     const { userName } = useParams();
-
     const posts = useUserPosts();
-
+    
+    useGetPosts();
+    
     useEffect(() => {
         if (!userName) {
             console.error('No viene parámentro de usuario');
@@ -27,8 +27,6 @@ function User() {
         }
 
         setUser(userFound);
-        // const postList = listPostsByUser(userName);
-        // setPosts(postList);
     }, [userName]);
 
     return (

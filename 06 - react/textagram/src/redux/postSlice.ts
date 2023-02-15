@@ -46,6 +46,7 @@ export const postSlice = createSlice({
         builder.addCase(getPostsAction.fulfilled, (state, action) => {
             state.list = action.payload;
             state.loading = ApiState.SUCCESS;
+            state.retries = 0;
         })
         builder.addCase(getPostsAction.rejected, (state, action) => {
             console.log(action.error.message);
