@@ -1,26 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { IPost } from "../interfaces";
+import { ApiState } from "../interfaces/api-state";
 import { getPosts as getPostsService, addPost as addPostService } from '../services/post';
 
 export interface PostState {
     list: IPost[];
-    loading: boolean;
+    loading: ApiState;
+    retries: number;
 };
 
 const initialState: PostState = {
     list: [],
-    loading: false,
+    loading: ApiState.IDDLE,
+    retries: 0,
 };
 
 export const getPostsAction = createAsyncThunk('posts/getPosts', async () => {
     const list = await getPostsService();
     return list;
 });
-
-// getPostsService().then(() => {
-//     postSlice.actions.addPost()
-// })
 
 export const postSlice = createSlice({
     name: 'posts',
@@ -37,11 +36,16 @@ export const postSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getPostsAction.pending, (state) => {
-            state.loading = true;
+            state.loading = ApiState.LOADING;
         })
         builder.addCase(getPostsAction.fulfilled, (state, action) => {
             state.list = action.payload;
-            state.loading = false;
+            state.loading = ApiState.SUCCESS;
+        })
+        builder.addCase(getPostsAction.rejected, (state, action) => {
+            console.log(action.error.message);
+            state.loading = ApiState.FAILED;
+            state.retries += 1;
         })
     }
 });

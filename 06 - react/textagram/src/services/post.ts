@@ -33,10 +33,11 @@ export function addPost(newPost: IPost): boolean {
 }
 
 export function getPosts(): Promise<IPost[]> {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log('Esto es una llamada a la API');
-        resolve(postList);
+        reject(new Error('Error en la api'));
+        // resolve(postList);
       }, 2000);
     });
 }

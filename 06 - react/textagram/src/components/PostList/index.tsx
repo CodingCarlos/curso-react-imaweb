@@ -10,7 +10,9 @@ interface IPostList {
 function PostList(props: IPostList) {
     return (
         <>
-            { props.list.map((post) => (
+            { props.list.length === 0 ? (
+                <div>No hay posts</div>
+            ) : props.list.map((post) => (
                 <Post
                     key={post.id}
                     post={post}
