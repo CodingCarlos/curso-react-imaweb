@@ -8,9 +8,11 @@ export interface IComentario {
     comentario: string;
 }
 
-export interface IPost {
-    id: string;
+export interface INewPost {
     usuario: IUsuario;
     contenido: string;
     comentarios?: IComentario[];
+}
+export interface IPost extends INewPost {
+    id: string;
 }

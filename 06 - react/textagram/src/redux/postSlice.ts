@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { IPost } from "../interfaces";
+// import type { PayloadAction } from "@reduxjs/toolkit";
+import { IPost, INewPost } from "../interfaces";
 import { ApiState } from "../interfaces/api-state";
 import { getPosts as getPostsService, addPost as addPostService } from '../services/post';
 
@@ -21,6 +21,11 @@ export const getPostsAction = createAsyncThunk('posts/getPosts', async () => {
     return list;
 });
 
+export const addPostAction = createAsyncThunk('posts/addPost', async (newPost: INewPost) => {
+    const post = await addPostService(newPost);
+    return post;
+});
+
 export const postSlice = createSlice({
     name: 'posts',
     initialState,
@@ -28,11 +33,11 @@ export const postSlice = createSlice({
         // getPosts: (state) => {
         //     state.list = getPostsService();
         // },
-        addPost: (state, action: PayloadAction<IPost>) => {
-            const newPost = action.payload;
-            addPostService(newPost);
-            state.list = [newPost, ...state.list];
-        },
+        // addPost: (state, action: PayloadAction<INewPost>) => {
+        //     const newPost = action.payload;
+        //     const post = addPostService(newPost);
+        //     state.list = [post, ...state.list];
+        // },
     },
     extraReducers: (builder) => {
         builder.addCase(getPostsAction.pending, (state) => {
@@ -47,8 +52,13 @@ export const postSlice = createSlice({
             state.loading = ApiState.FAILED;
             state.retries += 1;
         })
+
+        builder.addCase(addPostAction.fulfilled, (state, action) => {
+            const newPost = action.payload;
+            state.list = [newPost, ...state.list];
+        })
     }
 });
 
-export const { addPost } = postSlice.actions;
+// export const { addPost } = postSlice.actions;
 export default postSlice.reducer;

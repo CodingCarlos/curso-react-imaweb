@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch, RootState } from '../../redux/store';
 // import { getPosts, addPost } from '../../redux/postSlice';
-import { getPostsAction, addPost } from '../../redux/postSlice';
+import { getPostsAction, addPostAction } from '../../redux/postSlice';
 
-import { IPost } from '../../interfaces';
+import { INewPost } from '../../interfaces';
 
 import PostForm from './components/PostForm';
 import PostList from '../../components/PostList';
@@ -27,10 +27,10 @@ function Home() {
       }
 
 
-    }, [dispatch, loading]);
+    }, [dispatch, loading, retries]);
   
-    function addNewPost(newPost: IPost) {
-      dispatch(addPost(newPost));
+    function addNewPost(newPost: INewPost) {
+      dispatch(addPostAction(newPost));
     }
   
     return (

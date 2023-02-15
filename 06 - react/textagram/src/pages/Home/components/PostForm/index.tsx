@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import LoginContext from "../../../../contexts/LoginContext";
-import { IPost } from "../../../../interfaces";
+import { INewPost } from "../../../../interfaces";
 
 import './PostForm.scss';
 
 interface PostFormProps {
-    onNewPost: (newPost: IPost) => void;
+    onNewPost: (newPost: INewPost) => void;
 }
 
 function PostForm(props: PostFormProps) {
@@ -26,8 +26,8 @@ function PostForm(props: PostFormProps) {
         }
 
         // Creamos nuestro nuevo post
-        const newPost: IPost = {
-            id: `${Math.floor(Math.random() * 100000)}`,
+        const newPost: INewPost = {
+            // id: `${Math.floor(Math.random() * 100000)}`,
             contenido: newPostText,
             usuario: login,
         };

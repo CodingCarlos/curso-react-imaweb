@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import { IUsuario, IPost } from "../../interfaces";
-import { listPostsByUser } from '../../services/post';
+import { IUsuario } from "../../interfaces";
 import { findUser } from '../../services/user';
 import UserHeader from "./components/UserHeader";
 import PostList from "../../components/PostList";
+import useUserPosts from "./hooks/useUserPosts";
 
 function User() {
     const [user, setUser] = useState<IUsuario>();
-    const [posts, setPosts] = useState<IPost[]>([]);
+    // const [posts, setPosts] = useState<IPost[]>([]);
 
     const { userName } = useParams();
+
+    const posts = useUserPosts();
 
     useEffect(() => {
         if (!userName) {
@@ -25,8 +27,8 @@ function User() {
         }
 
         setUser(userFound);
-        const postList = listPostsByUser(userName);
-        setPosts(postList);
+        // const postList = listPostsByUser(userName);
+        // setPosts(postList);
     }, [userName]);
 
     return (

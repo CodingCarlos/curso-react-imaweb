@@ -12,6 +12,7 @@ function ProtectedRoute(props: IProtectedRoute) {
     const location = useLocation();
 
     useEffect(() => {
+        // console.log('ProtectedRoute >', loginData);
         // Ir al login si no estás logeado
         if (!loginData) {
             navigate(`/login?redirect=${location.pathname}`);

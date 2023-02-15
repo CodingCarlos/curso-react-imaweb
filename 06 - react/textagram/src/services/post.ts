@@ -1,47 +1,27 @@
-import { IPost } from '../interfaces';
+import { IPost, INewPost } from '../interfaces';
 
-const post: IPost = {
-  id: '',
-  usuario: {
-    name: "Paco",
-    pic: "https://randomuser.me/api/portraits/lego/6.jpg"
-  },
-  contenido: "Hola, soy un post",
-  comentarios: [
-    {
-      usuario: {
-        name: "Paco",
-        pic: "https://randomuser.me/api/portraits/lego/6.jpg"
-      },
-      comentario: "Vaya pedazo de post",
-    },
-  ],
-};
+const apiUrl = 'https://us-central1-textagram-app.cloudfunctions.net/app';
+// const apiUrl = 'http://localhost:5000/textagram-app/us-central1/app';
 
-let postList = [
-  { ...post, id: '1' }, 
-  { ...post, id: '2', usuario: {
-    name: "Julia",
-    pic: "https://randomuser.me/api/portraits/lego/7.jpg"
-  }}, 
-  { ...post, id: '3' }, 
-];
-
-export function addPost(newPost: IPost): boolean {
-  postList = [newPost, ...postList];
-  return true;
+export async function addPost(newPost: INewPost): Promise<IPost> {
+  // postList = [newPost, ...postList];
+  const response = await fetch(`${apiUrl}/post`, {
+    method: 'post',
+    body: JSON.stringify(newPost),
+  });
+  const post: IPost = await response.json();
+  return post;
 }
 
-export function getPosts(): Promise<IPost[]> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log('Esto es una llamada a la API');
-        reject(new Error('Error en la api'));
-        // resolve(postList);
-      }, 2000);
-    });
+export async function getPosts(): Promise<IPost[]> {
+  let postList: IPost[] = [];
+  const response = await fetch(`${apiUrl}/post`);
+  postList = await response.json();
+
+  return postList;
 }
 
 export function listPostsByUser(name: string): IPost[] {
-  return postList.filter(post => post.usuario.name === name);
+  return [];
+  // return postList.filter(post => post.usuario.name === name);
 }

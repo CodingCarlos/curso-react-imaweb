@@ -1,11 +1,14 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 const express = require('express');
+var cors = require('cors')
 
 admin.initializeApp();
 
 const db = admin.firestore();
 const app = express();
+
+app.use(cors());
 
 app.get('/:collection', async (request, response)=>{
   const ref = db.collection(request.params.collection);
@@ -37,10 +40,11 @@ app.post('/:collection', async (request, response)=>{
     return response.send('error');
   }
 
-  const res = await db.collection(request.params.collection).add(request.body);
+  const body = JSON.parse(request.body);
+  const res = await db.collection(request.params.collection).add(body);
 
   response.send({
-    ...request.body,
+    ...body,
     id: res.id,
   });
 });
