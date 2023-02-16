@@ -1,35 +1,38 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { AppDispatch, RootState } from '../../redux/store';
+import { AppDispatch } from '../../redux/store';
 import { addPostAction } from '../../redux/postSlice';
 
 import { INewPost } from '../../interfaces';
 
 import PostForm from './components/PostForm';
 import PostList from '../../components/PostList';
-import { ApiState } from '../../interfaces/api-state';
-import useGetPosts from '../../hooks/useGetPosts';
+// import useGetPosts from '../../hooks/useGetPosts';
+import { useGetPostsQuery } from '../../domain/api/api';
 
 function Home() {
     const dispatch = useDispatch<AppDispatch>();
-    const posts = useSelector((state: RootState) => state.posts.list);
-    const loading = useSelector((state: RootState) => state.posts.loading);
+    const { data: posts, isLoading: loading, refetch } = useGetPostsQuery();
 
-    useGetPosts();
+    useEffect(() => {
+      refetch();
+    }, [refetch])
   
-    function addNewPost(newPost: INewPost) {
-      dispatch(addPostAction(newPost));
+    async function addNewPost(newPost: INewPost) {
+      await dispatch(addPostAction(newPost))
+      refetch();
     }
   
     return (
         <>
           <PostForm onNewPost={addNewPost} />
-          { loading === ApiState.IDDLE || loading === ApiState.LOADING ? (
+          {/* { loading === ApiState.IDDLE || loading === ApiState.LOADING ? ( */}
+          { loading ? (
               <div>Cargando...</div>
-            ) : (
+            ) : posts ? (
               <PostList list={posts} />
-            )
+            ) : <div>Error</div>
           }
         </>
     )

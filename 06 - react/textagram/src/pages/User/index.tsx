@@ -15,8 +15,6 @@ function User() {
     const posts = useUserPosts();
     const users = useSelector((state: RootState) => state.users.list)
     
-    useGetPosts();
-    
     useEffect(() => {
         if (!userName) {
             console.error('No viene parámentro de usuario');
