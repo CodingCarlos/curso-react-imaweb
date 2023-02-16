@@ -29,16 +29,7 @@ export const addPostAction = createAsyncThunk('posts/addPost', async (newPost: I
 export const postSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {
-        // getPosts: (state) => {
-        //     state.list = getPostsService();
-        // },
-        // addPost: (state, action: PayloadAction<INewPost>) => {
-        //     const newPost = action.payload;
-        //     const post = addPostService(newPost);
-        //     state.list = [post, ...state.list];
-        // },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getPostsAction.pending, (state) => {
             state.loading = ApiState.LOADING;
@@ -61,5 +52,4 @@ export const postSlice = createSlice({
     }
 });
 
-// export const { addPost } = postSlice.actions;
 export default postSlice.reducer;
