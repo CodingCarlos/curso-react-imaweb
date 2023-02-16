@@ -1,11 +1,14 @@
 import React, { useRef } from "react";
+import { useSelector } from "react-redux";
 import useLogin from "../../hooks/useLogin";
+import { RootState } from "../../redux/store";
 import { addUser, findUser } from "../../services/user";
 import RegisterUser from "./components/RegisterUser";
 
 function Login() {
     const username = useRef<HTMLInputElement>(null);
     const login = useLogin();
+    const users = useSelector((state: RootState) => state.users.list)
 
     function doLogin(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -14,7 +17,7 @@ function Login() {
             return;
         }
 
-        const foundUser = findUser(username.current.value);
+        const foundUser = findUser(users, username.current.value);
         if (!foundUser) {
             console.error('Usuario no encontrado');
             return;

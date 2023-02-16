@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { IUsuario } from "../../interfaces";
 import { findUser } from '../../services/user';
@@ -6,11 +7,13 @@ import UserHeader from "./components/UserHeader";
 import PostList from "../../components/PostList";
 import useUserPosts from "./hooks/useUserPosts";
 import useGetPosts from "../../hooks/useGetPosts";
+import { RootState } from "../../redux/store";
 
 function User() {
     const [user, setUser] = useState<IUsuario>();
     const { userName } = useParams();
     const posts = useUserPosts();
+    const users = useSelector((state: RootState) => state.users.list)
     
     useGetPosts();
     
@@ -20,14 +23,14 @@ function User() {
             return;
         }
         
-        const userFound = findUser(userName);
+        const userFound = findUser(users, userName);
         if (!userFound) {
             console.error('Usuario no encontrado');
             return;
         }
 
         setUser(userFound);
-    }, [userName]);
+    }, [userName, users]);
 
     return (
         <>
