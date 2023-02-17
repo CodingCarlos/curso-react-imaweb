@@ -22,6 +22,7 @@ import Topbar from './components/Topbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import './App.scss';
+import PostDetail from './pages/PostDetail';
 
 function App() {
   const [savedUser] = useLocalStorage<IUsuario>('logged_user');
@@ -62,6 +63,13 @@ function App() {
                   <ProtectedRoute>
                     <User />
                   </ProtectedRoute>
+                )}
+              />
+
+              <Route
+                path="/post/:id" 
+                element={(
+                    <PostDetail />
                 )}
               />
 

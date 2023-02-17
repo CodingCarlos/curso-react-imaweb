@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetPostsQuery } from "../../../domain/api/api";
+// import { useGetPostsQuery } from "../../../domain/api/api";
+import { useListarPostsQuery } from "../../../domain/api/post";
 import { IPost } from "../../../interfaces";
 
 function useUserPosts() {
-    const { data: allPosts } = useGetPostsQuery();
+    const { data: allPosts } = useListarPostsQuery();
     const [posts, setPosts] = useState<IPost[]>([])
     const { userName } = useParams();
 

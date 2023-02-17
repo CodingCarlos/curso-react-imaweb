@@ -4,6 +4,7 @@ import Comments from "./Comments";
 import UserPicName from "../UserPicName";
 
 import './Post.scss';
+import { Link } from "react-router-dom";
 
 interface IPostProps {
     post: IPost;
@@ -32,6 +33,10 @@ export default function Post(props: IPostProps) {
             <button onClick={toggleComments}>
                 {post.comentarios?.length || 'No hay'} Comentarios
             </button>
+
+            <Link to={`/post/${post.id}`}>
+                Ver detalles
+            </Link>
 
             { showComments && (
                 <Comments list={post.comentarios || []} postComment />
