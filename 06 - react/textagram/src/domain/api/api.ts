@@ -8,9 +8,10 @@ export const api = createApi({
         baseUrl: apiUrl,
     }),
     keepUnusedDataFor: 30,
+    refetchOnFocus: true,
     endpoints: (builder) => ({
         getPosts: builder.query<IPost[], void>({
-            query: () => '/post',
+            query: (name) => '/post',
         }),
     }),
 });

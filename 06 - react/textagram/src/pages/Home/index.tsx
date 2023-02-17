@@ -12,30 +12,31 @@ import PostList from '../../components/PostList';
 import { useGetPostsQuery } from '../../domain/api/api';
 
 function Home() {
-    const dispatch = useDispatch<AppDispatch>();
-    const { data: posts, isLoading: loading, refetch } = useGetPostsQuery();
+  const dispatch = useDispatch<AppDispatch>();
+  const { data: posts, isLoading: loading, refetch } = useGetPostsQuery();
+  
+  useEffect(() => {
+    refetch();
+  }, [refetch])
+  
+  
+  async function addNewPost(newPost: INewPost) {
+    await dispatch(addPostAction(newPost))
+    refetch();
+  }
 
-    useEffect(() => {
-      refetch();
-    }, [refetch])
-  
-    async function addNewPost(newPost: INewPost) {
-      await dispatch(addPostAction(newPost))
-      refetch();
-    }
-  
-    return (
-        <>
-          <PostForm onNewPost={addNewPost} />
-          {/* { loading === ApiState.IDDLE || loading === ApiState.LOADING ? ( */}
-          { loading ? (
-              <div>Cargando...</div>
-            ) : posts ? (
-              <PostList list={posts} />
-            ) : <div>Error</div>
-          }
-        </>
-    )
+  return (
+    <>
+      <PostForm onNewPost={addNewPost} />
+      {/* { loading === ApiState.IDDLE || loading === ApiState.LOADING ? ( */}
+      { loading ? (
+          <div>Cargando...</div>
+        ) : posts ? (
+          <PostList list={posts} />
+        ) : <div>Error</div>
+      }
+    </>
+  )
 }
 
 export default Home;
