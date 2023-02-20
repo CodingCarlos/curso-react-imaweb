@@ -27,7 +27,8 @@ const apiConPost = api.injectEndpoints({
             //     return url;
             // },
             keepUnusedDataFor: 30,
-            transformResponse: (response: ResponsePorDefecto): IPost[] => {
+            // transformResponse: (response: ResponsePorDefecto): IPost[] => {
+            transformResponse: (response: IPost[]): IPost[] => {
                 // return response.data.result;
                 console.log('response', response);
                 return response.sort((a, b) => {
