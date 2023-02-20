@@ -5,7 +5,7 @@ import { useListarPostsQuery } from "../../../domain/api/post";
 import { IPost } from "../../../interfaces";
 
 function useUserPosts() {
-    const { data: allPosts } = useListarPostsQuery();
+    const { data: allPosts } = useListarPostsQuery({});
     const [posts, setPosts] = useState<IPost[]>([])
     const { userName } = useParams();
 

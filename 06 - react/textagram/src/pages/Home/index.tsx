@@ -12,7 +12,7 @@ import { useListarPostsQueryRefetchOnFocus, endpoints } from '../../domain/api/p
 
 function Home() {
   const dispatch = useDispatch<AppDispatch>();
-  const { data: posts, isLoading: loading, refetch } = useListarPostsQueryRefetchOnFocus();
+  const { data: posts, isLoading: loading, refetch } = useListarPostsQueryRefetchOnFocus({ orden: 'timestamp' });
   
   useEffect(() => {
     refetch();
