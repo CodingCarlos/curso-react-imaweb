@@ -1,0 +1,11 @@
+
+@use '../../../scss/variables.scss' as variables;
+
+$comment-margin-left: calc(variables.$spacing-basic-horizontal * 2);
+
+.comments {
+    margin-top: variables.$spacing-basic-vertical;
+    margin-left: $comment-margin-left;
+    border-left: 2px solid variables.$color-primary;
+    padding-left: calc(variables.$spacing-basic-horizontal / 2);
+}

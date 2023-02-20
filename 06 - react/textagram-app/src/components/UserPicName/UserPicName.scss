@@ -1,0 +1,46 @@
+@use '../../scss/variables.scss' as variables;
+
+.user-pic-name {
+    width: 100%;
+    text-align: left;
+    margin-bottom: variables.$spacing-basic-vertical;
+    
+    a {
+        display: flex;
+        align-items: center;
+        // gap: 16px;
+    }
+
+    img {
+        height: variables.$profile-pic-size;
+        width: variables.$profile-pic-size;
+        border-radius: 50%;
+    }
+
+    span {
+        margin-left: 12px;
+        font-size: 1.1rem;
+    }
+
+    &--big {
+        img {
+            height: 100px;
+            width: 100px;
+        }
+    
+        span {
+            font-size: 2.1rem;
+        }
+    }
+}
+
+// .user-pic-name.user-pic-name--big {
+//     img {
+//         height: 100px;
+//         width: 100px;
+//     }
+
+//     span {
+//         font-size: 2.1rem;
+//     }
+// }

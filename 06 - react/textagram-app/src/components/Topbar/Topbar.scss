@@ -1,0 +1,19 @@
+@use '../../scss/variables.scss' as variables;
+
+header.topbar {
+    background-color: variables.$color-primary;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: variables.$topbar-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    box-sizing: border-box;
+
+    h1 {
+        margin: 0;
+    }
+}

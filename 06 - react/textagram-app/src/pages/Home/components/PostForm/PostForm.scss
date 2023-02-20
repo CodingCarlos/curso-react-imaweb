@@ -1,0 +1,24 @@
+@use '../../../../scss/variables.scss';
+
+form.post-form {
+    display: flex;
+    flex-direction: column;
+
+    button {  
+        align-self: flex-end;
+        margin: variables.$spacing-basic-vertical 0;
+    }
+
+    textarea {
+        min-height: 64px;
+
+        ::placeholder {
+            font-family: inherit;
+        }
+    }
+
+    button, textarea {
+        padding: variables.$spacing-basic-vertical variables.$spacing-basic-horizontal;
+        box-sizing: border-box;
+    }
+}

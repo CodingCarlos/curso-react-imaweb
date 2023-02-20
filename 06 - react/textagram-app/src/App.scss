@@ -1,0 +1,19 @@
+@use './scss/variables.scss' as variables;
+
+.App {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 100%;
+    max-width: variables.$container-max-width;
+  }
+}
+
+.has-topbar {
+  margin-top: variables.$topbar-height;
+}
+
+.content-padding {
+  padding: variables.$spacing-basic;
+}
