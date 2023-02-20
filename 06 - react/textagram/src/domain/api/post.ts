@@ -11,7 +11,7 @@ const apiConPost = api.injectEndpoints({
             query: (nuevoPost) => ({
                 url: '/post',
                 method: 'POST',
-                body: nuevoPost,
+                body: JSON.stringify(nuevoPost),
             }),
         }),
         traerPost: builder.query<IPost, string>({
