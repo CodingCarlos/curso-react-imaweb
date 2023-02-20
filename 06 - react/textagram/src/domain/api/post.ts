@@ -42,7 +42,8 @@ const apiConPost = api.injectEndpoints({
                 });
             }
         }),
-        anadirPost: builder.query<IPost, INewPost>({
+        // anadirPost: builder.query<IPost, INewPost>({
+        anadirPost: builder.mutation<IPost, INewPost>({
             query: (nuevoPost) => ({
                 url: '/post',
                 method: 'POST',
@@ -57,7 +58,7 @@ const apiConPost = api.injectEndpoints({
 
 export const {
     useListarPostsQuery,
-    useAnadirPostQuery,
+    useAnadirPostMutation,
     useTraerPostQuery,
 } = apiConPost;
 

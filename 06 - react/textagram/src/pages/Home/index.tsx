@@ -8,19 +8,21 @@ import { INewPost } from '../../interfaces';
 
 import PostForm from './components/PostForm';
 import PostList from '../../components/PostList';
-import { useListarPostsQueryRefetchOnFocus, endpoints } from '../../domain/api/post';
+import { useListarPostsQueryRefetchOnFocus, useAnadirPostMutation, endpoints } from '../../domain/api/post';
 
 function Home() {
-  const dispatch = useDispatch<AppDispatch>();
+  // const dispatch = useDispatch<AppDispatch>();
   const { data: posts, isLoading: loading, refetch } = useListarPostsQueryRefetchOnFocus({ orden: 'timestamp' });
-  
+  const [anadirPost] = useAnadirPostMutation();
+
   useEffect(() => {
     refetch();
   }, [refetch])
   
   
   async function addNewPost(newPost: INewPost) {
-    await dispatch(endpoints.anadirPost.initiate(newPost));
+    // await dispatch(endpoints.anadirPost.initiate(newPost));
+    await anadirPost(newPost);
     refetch();
   }
 
