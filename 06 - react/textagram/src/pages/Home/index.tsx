@@ -10,7 +10,7 @@ import PostForm from './components/PostForm';
 import PostList from '../../components/PostList';
 import { useListarPostsQueryRefetchOnFocus, useAnadirPostMutation, endpoints } from '../../domain/api/post';
 
-function Home() {
+function Home(props: any) {
   // const dispatch = useDispatch<AppDispatch>();
   const { data: posts, isLoading: loading, refetch } = useListarPostsQueryRefetchOnFocus({ orden: 'timestamp' });
   const [anadirPost] = useAnadirPostMutation();
@@ -28,6 +28,7 @@ function Home() {
 
   return (
     <>
+      <h1>{props.title}</h1>
       <PostForm onNewPost={addNewPost} />
       { loading ? (
           <div>Cargando...</div>

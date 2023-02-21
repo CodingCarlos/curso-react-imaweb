@@ -49,7 +49,7 @@ function App() {
             <Routes>
               <Route
                 path="/"
-                element={(<Home />)}
+                element={(<Home title="Lo que sea" />)}
               />
 
               <Route
