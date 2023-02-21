@@ -9,5 +9,15 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  console.log(req.query)
+  let username: string = '';
+  
+  if (Array.isArray(req.query.username)) {
+    username = req.query.username.toString();
+  } else {
+    username = req.query.username || '';
+  }
+
+  res.status(200).json({ name: username || 'John Doe' })
+  // res.status(200).send('<html><body><h1>HOLA QUE TAL</h1></body></html>')
 }

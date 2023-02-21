@@ -1,7 +1,3 @@
-export default function About() {
-    return (
-        <>
-            <h1>Soy el about me</h1>
-        </>
-    );
-}
+import About from '@/views/about';
+
+export default About;
