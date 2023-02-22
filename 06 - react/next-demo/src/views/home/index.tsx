@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { useState } from 'react'
+import { useState } from 'react';
 
 import styles from './Home.module.scss';
 
 export interface HomeProps {
   titulo: string;
-};
+}
 
 export default function Home({ titulo }: HomeProps) {
   const [nombre, setNombre] = useState('Carlos');
@@ -13,11 +13,12 @@ export default function Home({ titulo }: HomeProps) {
   return (
     <>
       <main className={styles.contenido}>
-        <h1 className='bg-primary'>
-          {titulo}
-        </h1>
+        <h1 className="bg-primary">{titulo}</h1>
         <h2>Soy la home de {nombre}</h2>
-        <button className={`${styles.grande} bg-primary`} onClick={() => setNombre('Paco')}>
+        <button
+          className={`${styles.grande} bg-primary`}
+          onClick={() => setNombre('Paco')}
+        >
           Cambiar nombre
         </button>
         <p>
@@ -29,5 +30,5 @@ export default function Home({ titulo }: HomeProps) {
         Fuera de contenido
       </button>
     </>
-  )
+  );
 }

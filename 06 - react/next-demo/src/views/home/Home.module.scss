@@ -2,19 +2,19 @@
 @use '@/styles/variables';
 
 .contenido {
-    @extend %flex-between;
-    background-color: #A06F1B;
+  @extend %flex-between;
+  background-color: #a06f1b;
 
-    p {
-        padding: 32px;
-        background-color: #eccb92;
+  p {
+    padding: 32px;
+    background-color: #eccb92;
 
-        a {
-            color: variables.$color-primary;
-        }
+    a {
+      color: variables.$color-primary;
     }
+  }
 
-    .grande {
-        font-size: 2rem;
-    }
+  .grande {
+    font-size: 2rem;
+  }
 }

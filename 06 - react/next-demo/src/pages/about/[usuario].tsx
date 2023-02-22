@@ -29,28 +29,28 @@ import AboutMe from '@/views/about/me';
 
 // Dynamic (SSR)
 interface AboutMeContextProps {
-    params: {
-        usuario?: string,
-    },
-    query: {
-        usuario?: string,
-    }
+  params: {
+    usuario?: string;
+  };
+  query: {
+    usuario?: string;
+  };
 }
 
 export async function getServerSideProps(context: AboutMeContextProps) {
-    // console.log(context);
+  // console.log(context);
 
-    return {
-        props: {
-            usuario: context.params.usuario,
-        },
-    };
+  return {
+    props: {
+      usuario: context.params.usuario,
+    },
+  };
 }
 
 export default function AboutMePage(props: any) {
-    return (
-        <DefaultLayout>
-            <AboutMe {...props} />
-        </DefaultLayout>
-    )
-};
+  return (
+    <DefaultLayout>
+      <AboutMe {...props} />
+    </DefaultLayout>
+  );
+}
