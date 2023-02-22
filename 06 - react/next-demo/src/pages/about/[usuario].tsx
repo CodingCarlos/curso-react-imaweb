@@ -1,3 +1,4 @@
+import DefaultLayout from '@/layouts/DefaultLayout';
 import AboutMe from '@/views/about/me';
 
 // Static (SSG)
@@ -47,5 +48,9 @@ export async function getServerSideProps(context: AboutMeContextProps) {
 }
 
 export default function AboutMePage(props: any) {
-    return <AboutMe {...props} />
+    return (
+        <DefaultLayout>
+            <AboutMe {...props} />
+        </DefaultLayout>
+    )
 };

@@ -1,23 +1,25 @@
+import DefaultLayout from '@/layouts/DefaultLayout';
 import Home, { HomeProps } from '@/views/home';
 import Head from 'next/head';
 
 // export default Home;
 export async function getStaticProps() {
+    const timestamp = Date.now();
+
     return {
-        props: { titulo: 'Soy un titulo' }
+        props: { 
+            titulo: `Generado en: ${timestamp}`,
+        },
+        revalidate: 10,
     }
 }
 
 export default function HomePage(props: HomeProps) {
     return (
         <>
-            <Head>
-                <title>{props.titulo || 'La mejor app de Europa'}</title>
-                <meta name="description" content="Una app para aprender los basics de next" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                {/* <link rel="icon" href="/favicon.ico" /> */}
-            </Head>
-            <Home {...props} />
+            <DefaultLayout titulo={props.titulo}>
+                <Home {...props} />
+            </DefaultLayout>
         </>
     );
 }

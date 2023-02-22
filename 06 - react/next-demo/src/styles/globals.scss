@@ -1,0 +1,9 @@
+@use 'variables';
+
+body {
+    background-color: #ccc;
+}
+
+.bg-primary {
+    background-color: variables.$color-primary;
+}

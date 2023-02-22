@@ -1,0 +1,20 @@
+@use '@/styles/flex';
+@use '@/styles/variables';
+
+.contenido {
+    @extend %flex-between;
+    background-color: #A06F1B;
+
+    p {
+        padding: 32px;
+        background-color: #eccb92;
+
+        a {
+            color: variables.$color-primary;
+        }
+    }
+
+    .grande {
+        font-size: 2rem;
+    }
+}
