@@ -37,7 +37,7 @@ interface AboutMeContextProps {
 }
 
 export async function getServerSideProps(context: AboutMeContextProps) {
-    console.log(context);
+    // console.log(context);
 
     return {
         props: {
