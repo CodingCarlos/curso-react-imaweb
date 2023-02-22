@@ -12,7 +12,7 @@ export interface HomeProps {
 
 export default function Home({ titulo }: HomeProps) {
   const [nombre, setNombre] = useState('Carlos');
-  const [apiUrl] = useState(process.env.NEXT_PUBLIC_API_URL);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   console.log(apiUrl)
 
   return (
